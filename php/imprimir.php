@@ -1,26 +1,25 @@
 <?php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 require_once 'auth.php'; // Verificación de sesión
 require_once('../bd/base_de_datos.php');
-require_once('tcpdf/tcpdf.php'); // Ruta a la biblioteca TCPDF
+require_once('../library/tcpdf.php'); // Ruta a la biblioteca TCPDF
 
 $sql_select = "SELECT * FROM productos";
 $resultado_select = $base_de_datos->query($sql_select);
 
 if ($resultado_select && $resultado_select->rowCount() > 0) {
-    // Crear nueva instancia de TCPDF
+
     $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-    // Configurar información del documento
+
     $pdf->SetCreator(PDF_CREATOR);
     $pdf->SetAuthor('Tu Nombre');
     $pdf->SetTitle('Lista de Productos - TiendaSoft');
     $pdf->SetSubject('Lista de Productos');
     $pdf->SetKeywords('TiendaSoft, productos, PDF');
 
-    // Agregar una página
     $pdf->AddPage();
 
-    // Contenido de la tabla
     $html = '<h2>LISTA DE PRODUCTOS:</h2>';
     $html .= '<table border="1">
                 <tr>
@@ -47,13 +46,10 @@ if ($resultado_select && $resultado_select->rowCount() > 0) {
 
     $html .= '</table>';
 
-    // Escribir el contenido HTML en el PDF
     $pdf->writeHTML($html, true, false, true, false, '');
 
-    // Nombre del archivo PDF para descargar
     $nombre_archivo = 'lista_productos.pdf';
 
-    // Salida del PDF (descarga directa)
     $pdf->Output($nombre_archivo, 'D');
     exit;
 } else {
