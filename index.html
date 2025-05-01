@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Administrador | Sistema de Abarrotes</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="shortcut icon" href="images/tiendasoft.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-register-body">
+    <div class="admin-register-container">
+        <header class="admin-register-header">
+            <div class="admin-register-logo">
+                <img src="images/tiendasoft.png" alt="Logo Abarrotes" class="admin-register-logo-img">
+            </div>
+            <h1 class="admin-register-title">Registro de Administrador</h1>
+            <p class="admin-register-subtitle">Sistema de Gestión de Abarrotes</p>
+        </header>
+
+        <main class="admin-register-main">
+            <form id="registerForm" action="php/registro_admin.php" method="POST" class="admin-register-form">
+                <div id="error-message" class="admin-register-error" style="display: none;"></div>
+                
+                <div class="admin-register-form-group">
+                    <label for="nombre" class="admin-register-label">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" class="admin-register-input" required placeholder="Ej. Juan Pérez López">
+                </div>
+
+                <div class="admin-register-form-group">
+                    <label for="correo" class="admin-register-label">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" class="admin-register-input" required placeholder="Ej. admin@dominio.com">
+                </div>
+
+                <div class="admin-register-form-group">
+                    <label for="pass" class="admin-register-label">Contraseña</label>
+                    <input type="password" id="pass" name="pass" class="admin-register-input" required placeholder="Mínimo 8 caracteres" minlength="8">
+                    <div class="admin-register-password-strength">
+                        <span class="admin-register-strength-bar"></span>
+                        <span class="admin-register-strength-bar"></span>
+                        <span class="admin-register-strength-bar"></span>
+                    </div>
+                </div>
+
+                <div class="admin-register-form-group">
+                    <label for="confirm-pass" class="admin-register-label">Confirmar Contraseña</label>
+                    <input type="password" id="confirm-pass" name="confirm-pass" class="admin-register-input" required placeholder="Repite tu contraseña">
+                </div>
+
+                <div class="admin-register-form-actions">
+                    <button type="submit" class="admin-register-submit-btn">Registrar Administrador</button>
+                    <a href="php/login_administrador.html" class="admin-register-login-link">¿Ya tienes cuenta? Inicia sesión</a>
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="scripts/contraseña.js"></script>
+</body>
+</html>

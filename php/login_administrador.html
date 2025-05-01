@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Administrador</title>
+    <link rel="stylesheet" href="../estilos/styles.css">
+    <link rel="shortcut icon" href="../images/tiendasoft.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="admin-register-body">
+    <div class="admin-register-container">
+        <header class="admin-register-header">
+            <img src="../images/tiendasoft.png" alt="Logo Administración" class="admin-register-logo-img">
+            <h1 class="admin-register-title">Iniciar Sesión</h1>
+            <p class="admin-register-subtitle">Panel de Administración</p>
+        </header>
+        
+        <main class="admin-register-main">
+            <div id="error-message" class="admin-register-error" style="display: none;"></div>
+            
+            <form class="admin-register-form" action="login_admin.php" method="POST">
+                <div class="admin-register-form-group">
+                    <label for="correo" class="admin-register-label">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" class="admin-register-input" required>
+                </div>
+                
+                <div class="admin-register-form-group">
+                    <label for="pass" class="admin-register-label">Contraseña</label>
+                    <input type="password" id="pass" name="pass" class="admin-register-input" required>
+                </div>
+                
+                <button type="submit" class="admin-register-submit-btn">Ingresar</button>
+            </form>
+            
+            <a href="../index.html" class="admin-register-login-link">¿No tienes cuenta? Regístrate aquí</a>
+        </main>
+    </div>
+<script>
+        // Mostrar mensaje de error si viene en la URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            
+            if(error) {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = decodeURIComponent(error);
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
