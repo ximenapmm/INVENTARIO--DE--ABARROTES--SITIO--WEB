@@ -7,17 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = $_POST['precio'];
     $cantidad = $_POST['cantidad'];
     $categoria = $_POST['categoria'];
-    $estado = $_POST['estado'];
+    $codigo_barras = $_POST['codigo_barras'];
 
-    $sql = "INSERT INTO productos (nombre, precio, cantidad, categoria, estado) 
-            VALUES (:nombre, :precio, :cantidad, :categoria, :estado)";
+    $sql = "INSERT INTO productos (nombre, precio, cantidad, categoria, codigo_barras) 
+            VALUES (:nombre, :precio, :cantidad, :categoria, :codigo_barras)";
     $stmt = $base_de_datos->prepare($sql);
     $resultado = $stmt->execute([
         ':nombre' => $nombre,
         ':precio' => $precio,
         ':cantidad' => $cantidad,
         ':categoria' => $categoria,
-        ':estado' => $estado
+        ':codigo_barras' => $codigo_barras
     ]);
 
     if ($resultado) {
@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Categoría: <br>
             <input class="caja" type="text" placeholder="Categoría" name="categoria" required><br> <br>
             
-            Estado: <br>
-            <input class="caja" type="text" placeholder="Estado" name="estado" required><br><br> <br>
+            Codigo de barras: <br>
+            <input class="caja" type="text" placeholder="Codigo de barras" name="codigo_barras" required><br><br> <br>
 
             <input class="btn" type="submit" value="Registrar">
         </form>

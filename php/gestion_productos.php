@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
     $precio = $_POST['precio'];
     $cantidad = $_POST['cantidad'];
     $categoria = $_POST['categoria'];
-    $estado = $_POST['estado'];
+    $codigo_barras = $_POST['codigo_barras'];
 
-    $sql = "UPDATE productos SET nombre = ?, precio = ?, cantidad = ?, categoria = ?, estado = ? WHERE id = ?";
+    $sql = "UPDATE productos SET nombre = ?, precio = ?, cantidad = ?, categoria = ?, codigo_barras = ? WHERE id = ?";
     $stmt = $base_de_datos->prepare($sql);
-    $stmt->execute([$nombre, $precio, $cantidad, $categoria, $estado, $id]);
+    $stmt->execute([$nombre, $precio, $cantidad, $categoria, $codigo_barras, $id]);
 
     echo "<script>alert('Producto actualizado correctamente.'); window.location.href='gestion_productos.php';</script>";
     exit;
@@ -76,8 +76,8 @@ $productos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 Categoría:<br>
                 <input class="caja" type="text" name="categoria" value="<?= htmlspecialchars($producto_editar['categoria']) ?>" required><br>
 
-                Estado:<br>
-                <input class="caja" type="text" name="estado" value="<?= htmlspecialchars($producto_editar['estado']) ?>" required><br><br>
+                Codigo de barras:<br>
+                <input class="caja" type="text" name="codigo_barras" value="<?= htmlspecialchars($producto_editar['codigo_barras']) ?>" required><br><br>
 
                 <input class="btn" type="submit" name="actualizar" value="Actualizar Producto">
 
@@ -95,7 +95,7 @@ $productos = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <th>Precio</th>
             <th>Cantidad</th>
             <th>Categoría</th>
-            <th>Estado</th>
+            <th>codigo_barras</th>
             <th>Acciones</th>
         </tr>
         <?php foreach ($productos as $producto): ?>
@@ -105,7 +105,7 @@ $productos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <td>$<?= number_format($producto['precio'], 2) ?></td>
                 <td><?= htmlspecialchars($producto['cantidad']) ?></td>
                 <td><?= htmlspecialchars($producto['categoria']) ?></td>
-                <td><?= htmlspecialchars($producto['estado']) ?></td>
+                <td><?= htmlspecialchars($producto['codigo_barras']) ?></td>
                 <td>
                     <a class="btn" href="?editar=<?= $producto['id'] ?>">Editar</a>
                 </td>

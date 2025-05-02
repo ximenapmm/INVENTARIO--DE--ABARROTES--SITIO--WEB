@@ -28,7 +28,7 @@ if ($resultado_select && $resultado_select->rowCount() > 0) {
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Categoria</th>
-                    <th>Estado</th>
+                    <th>Codigo de barras</th>
                     <th>Fecha de Registro</th>
                 </tr>';
 
@@ -39,7 +39,7 @@ if ($resultado_select && $resultado_select->rowCount() > 0) {
                     <td>$' . number_format($row['precio'], 2) . '</td>
                     <td>' . htmlspecialchars($row['cantidad']) . '</td>
                     <td>' . htmlspecialchars($row['categoria']) . '</td>
-                    <td>' . htmlspecialchars($row['estado']) . '</td>
+                    <td>' . htmlspecialchars($row['codigo_barras']) . '</td>
                     <td>' . htmlspecialchars($row['fecha_registro']) . '</td>
                   </tr>';
     }

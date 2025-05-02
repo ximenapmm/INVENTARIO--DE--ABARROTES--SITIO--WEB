@@ -39,7 +39,7 @@ $resultado_select = $base_de_datos->query($sql_select);
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Categoria</th>
-                        <th>Estado</th>
+                        <th>Codigo de barras</th>
                         <th>Fecha de Registro</th>
                     </tr>";
 
@@ -50,7 +50,7 @@ $resultado_select = $base_de_datos->query($sql_select);
                         <td>$" . number_format($row['precio'], 2) . "</td>
                         <td>" . htmlspecialchars($row['cantidad']) . "</td>
                         <td>" . htmlspecialchars($row['categoria']) . "</td>
-                        <td>" . htmlspecialchars($row['estado']) . "</td>
+                        <td>" . htmlspecialchars($row['codigo_barras']) . "</td>
                         <td>" . htmlspecialchars($row['fecha_registro']) . "</td>
                       </tr>";
             }

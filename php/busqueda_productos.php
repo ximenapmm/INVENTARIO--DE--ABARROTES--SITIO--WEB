@@ -1,5 +1,14 @@
 <?php
-require_once 'auth.php'; // Archivo de verificación de sesión
+require_once 'auth.php'; // Verificación de sesión
+include('../bd/base_de_datos.php');
+
+$producto_encontrado = null;
+if (!empty($_POST['codigo_barras'])) {
+    $codigo = $_POST['codigo_barras'];
+    $stmt = $base_de_datos->prepare("SELECT * FROM productos WHERE codigo_barras = ?");
+    $stmt->execute([$codigo]);
+    $producto_encontrado = $stmt->fetch(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +30,25 @@ require_once 'auth.php'; // Archivo de verificación de sesión
             <a href="logout.php" class="admin-navbar-item">Cerrar Sesión</a>
         </div>
     </nav>
-    <p>Búsqueda por código de barras</p>
+    <h1>Búsqueda por código de barras</h1>
+    <div class="contenedor">
+    <form method="POST">
+        <input type="text" name="codigo_barras" placeholder="Escanea o ingresa el código de barras" class="caja" autofocus required>
+        <input type="submit" class="btn" value="Buscar">
+    </form>
+
+    <?php if ($producto_encontrado): ?>
+        <div class="resultado-busqueda">
+            <h3>Producto encontrado:</h3>
+            <p><strong>Nombre:</strong> <?= htmlspecialchars($producto_encontrado['nombre']) ?></p>
+            <p><strong>Precio:</strong> $<?= number_format($producto_encontrado['precio'], 2) ?></p>
+            <p><strong>Cantidad:</strong> <?= $producto_encontrado['cantidad'] ?></p>
+            <p><strong>Categoría:</strong> <?= $producto_encontrado['categoria'] ?></p>
+        </div>
+    <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+        <p style="color:red;">Producto no encontrado con ese código.</p>
+    <?php endif; ?>
+</div>
+
 </body>
 </html>
