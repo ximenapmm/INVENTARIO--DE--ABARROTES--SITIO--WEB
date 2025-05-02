@@ -30,11 +30,14 @@ if (!empty($_POST['codigo_barras'])) {
             <a href="logout.php" class="admin-navbar-item">Cerrar Sesión</a>
         </div>
     </nav>
-    <h1>Búsqueda por código de barras</h1>
-    <div class="contenedor">
+    <h1 class="titulo-centrado">BÚSQUEDA POR CÓDIGO DE BARRAS</h1>
+    <div class="busqueda-contenedor">
     <form method="POST">
-        <input type="text" name="codigo_barras" placeholder="Escanea o ingresa el código de barras" class="caja" autofocus required>
-        <input type="submit" class="btn" value="Buscar">
+        <input type="text" 
+               class="caja" 
+               placeholder="Escanea código..."
+               autofocus required>
+        <button type="submit" class="btn">🔍 Buscar</button>
     </form>
 
     <?php if ($producto_encontrado): ?>

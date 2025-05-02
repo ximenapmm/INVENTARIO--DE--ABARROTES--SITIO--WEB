@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
   
-    <h2>ALTA DE PRODUCTOS</h2>
-    <div class="contenedor">
+    <h2 class="titulo-centrado">ALTA DE PRODUCTOS</h2>
+    <div class="alta-productos">
         <form method="POST">
             Nombre del producto: <br>
             <input class="caja" type="text" placeholder="Nombre" name="nombre" required><br> <br>

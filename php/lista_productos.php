@@ -27,8 +27,8 @@ $resultado_select = $base_de_datos->query($sql_select);
         </div>
     </nav>
 
-    <div class="contenedor">
-        <h2>LISTA DE PRODUCTOS:</h2>
+    <div class="contenedor lista-contenedor">
+    <h2 >LISTA DE PRODUCTOS:</h2>
         <?php
        
         if ($resultado_select && $resultado_select->rowCount() > 0){
@@ -61,8 +61,12 @@ $resultado_select = $base_de_datos->query($sql_select);
         }
         ?>
     </div>
-    <div style="margin-top: 1.5rem;">
-        <a href="imprimir.php" class="admin-btn">Crear PDF</a>
+    <div class="pdf-contenedor">
+    <a href="imprimir.php" class="admin-btn">
+        <!-- Si quieres un icono -->
+        <i class="fas fa-file-pdf"></i> 
+        Crear PDF
+    </a>
     </div>
 </body>
 </html>

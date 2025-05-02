@@ -268,3 +268,474 @@
     max-width: 380px;
     }
 }
+
+/************* ESTILOS PARA ALTA_PRODUCTOS.PHP *************/
+
+/************* alta_productos.php *************/
+
+
+/************* CLASE .titulo-centrado *************/
+.titulo-centrado {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    animation: tituloEntrada 0.8s var(--ease-out) both;
+}
+
+/* Animación de entrada del título */
+@keyframes tituloEntrada {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subrayado animado */
+.titulo-centrado::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--primary);
+    animation: subrayadoAnimado 0.6s 0.4s var(--ease-in-out) forwards;
+}
+
+@keyframes subrayadoAnimado {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+/* Efecto hover para interactividad */
+.titulo-centrado:hover {
+    cursor: default;
+    text-shadow: 0 2px 4px rgba(67, 97, 238, 0.1);
+}
+
+.titulo-centrado:hover::after {
+    width: 100px;
+    transition: all 0.3s var(--ease-in-out);
+}
+
+.alta-productos h2 {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: relative;
+    padding: 0 1rem; /* Asegura espacio en móviles */
+}
+
+/* Eliminar cualquier estilo conflictivo previo */
+.alta-productos h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* Contenedor principal */
+.contenedor {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título h2 existente */
+.contenedor h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Formulario - Aprovechando la etiqueta <form> existente */
+.contenedor form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Estilos para los textos "Precio", "Cantidad", etc. (etiquetas <br> + textos) */
+.contenedor form br + br {
+    display: none; /* Ocultamos los saltos de línea innecesarios */
+}
+
+.contenedor form br {
+    display: none; /* Ocultamos todos los br */
+}
+
+.contenedor form > * {
+    margin: 0.8rem 0;
+}
+
+/* Campos de entrada .caja (clase que ya usas) */
+.caja {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.caja:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    outline: none;
+}
+
+/* Botón .btn (clase existente) */
+.btn {
+    grid-column: span 2;
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor form {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        grid-column: span 1;
+    }
+    
+    .contenedor {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/************* alta_productos.php (Animaciones restauradas) *************/
+
+.alta-productos {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    animation: slideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Animación de entrada */
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Línea animada bajo el título */
+.alta-productos h2::after {
+    animation: lineGrow 0.8s 0.3s both;
+}
+
+@keyframes lineGrow {
+    from { width: 0; }
+    to { width: 50px; }
+}
+
+/* Animación del botón */
+.alta-productos .btn {
+    transition: all 0.3s ease;
+}
+
+.alta-productos .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+}
+
+/* Animación al enfocar inputs */
+.alta-productos .caja:focus {
+    transform: scale(1.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/************* gestion_productos.php *************/
+
+/* Contenedor específico para evitar conflictos */
+.gestion-contenedor {
+    overflow-x: auto; /* Para tablas responsivas */
+    padding: 1rem;
+}
+
+/* Tabla mejorada */
+.gestion-contenedor table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.gestion-contenedor th,
+.gestion-contenedor td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.gestion-contenedor th {
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
+}
+
+.gestion-contenedor tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+/* Botones de edición más pequeños */
+.gestion-contenedor .btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin: 2px;
+    display: inline-block;
+    width: auto;
+    grid-column: unset;
+}
+
+/* Ajuste para columnas de acciones */
+.gestion-contenedor td:last-child {
+    white-space: nowrap; /* Evita que el botón se rompa en 2 líneas */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gestion-contenedor th,
+    .gestion-contenedor td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .gestion-contenedor .btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+/************* lista_productos.php *************/
+
+/* Contenedor específico */
+.lista-contenedor {
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+/* Tabla con mismo estilo que gestión */
+.lista-contenedor table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.lista-contenedor th,
+.lista-contenedor td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.lista-contenedor th {
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
+}
+
+.lista-contenedor tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+/* Botón PDF igual a otros botones */
+.lista-contenedor .admin-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin-top: 0;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Ajuste para columnas */
+.lista-contenedor td:last-child {
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lista-contenedor th,
+    .lista-contenedor td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .lista-contenedor .admin-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/************* estilos *************/
+/* Centrar títulos principales */
+.gestion-contenedor h2, 
+.lista-contenedor h2,
+.busqueda-contenedor h1 {
+    text-align: center;
+    width: 100%;
+}
+
+/* Centrar tablas */
+.gestion-contenedor table,
+.lista-contenedor table {
+    margin: 0 auto;
+}
+
+/* Estilo profesional para tablas */
+.gestion-contenedor table,
+.lista-contenedor table {
+    border: 2px solid var(--primary);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Encabezados de tabla */
+th {
+    background: var(--primary-dark) !important;
+    color: white !important;
+    padding: 14px !important;
+}
+
+/* Celdas */
+td {
+    padding: 12px !important;
+    border: 1px solid var(--medium-gray) !important;
+    text-align: center !important;
+}
+
+/* Filas alternas */
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Efecto hover para filas de tabla */
+tr {
+    transition: all 0.2s var(--ease-out);
+}
+
+tr:hover {
+    background: rgba(67, 97, 238, 0.05) !important;
+    transform: translateX(4px);
+}
+/************* BUSQUEDA_PRODUCTOS.PHP contenedor y boton *************/
+
+/* Contenedor compacto */
+.busqueda-contenedor {
+    max-width: 600px; /* 25% más pequeño que el original */
+    margin: 1.5rem auto;
+    padding: 1.2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Formulario en línea */
+.busqueda-contenedor form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Input ajustado */
+.busqueda-contenedor .caja {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Botón mini al lado */
+.busqueda-contenedor .btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin: 0;
+    background: var(--primary);
+    transition: all 0.2s ease;
+}
+
+/* Efecto hover sutil */
+.busqueda-contenedor .btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(67, 97, 238, 0.15);
+}
+
+/* Responsive: Apilar en móviles */
+@media (max-width: 480px) {
+    .busqueda-contenedor form {
+        flex-direction: column;
+    }
+    
+    .busqueda-contenedor .caja,
+    .busqueda-contenedor .btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+/************* LISTA_PRODUCTOS.PHP botn pdf *************/
+
+/* Contenedor del botón PDF */
+.pdf-contenedor {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Botón PDF con estilo específico */
+.pdf-contenedor .admin-btn {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    border-radius: 25px;
+    transition: all 0.3s var(--ease-out);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
