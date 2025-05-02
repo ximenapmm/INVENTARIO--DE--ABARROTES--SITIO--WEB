@@ -55,8 +55,8 @@ $productos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="contenedor gestion-contenedor">
-        <h2>GESTIÓN DE PRODUCTOS</h2>
+    <div class="contenedor">
+        <h2>Gestión de Productos</h2>
 
         <?php if ($producto_editar): ?>
             <!-- Formulario de edición -->
